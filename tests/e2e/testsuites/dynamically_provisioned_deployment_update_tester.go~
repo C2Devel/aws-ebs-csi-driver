@@ -1,0 +1,28 @@
+package testsuites
+
+import (
+	"github.com/c2devel/aws-ebs-csi-driver/tests/e2e/driver"
+
+	v1 "k8s.io/api/core/v1"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
+
+type DynamicallyProvisionedDeploymentUpdateTest struct {
+	CSIDriver  driver.DynamicPVTestDriver
+	Deployment DeploymentDetails
+}
+
+func (t *DynamicallyProvisionedDeploymentUpdateTest) Run(client clientsest.Interface, namespace *v1.Namespace) {
+	deployment := t.Deployment
+	tdeployment, cleanup := deployment.SetupWithDynamicVolumes(client, namespace, t.CSIDriver)
+	By("deploying the deployment")
+	tdeployment.Create()
+	defer tdeployment.Cleanup()
+
+	By("update deployment")
+	tdeployment.Update()
+
+	By("checjing that disks are the same")
+}

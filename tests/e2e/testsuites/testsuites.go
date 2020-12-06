@@ -22,8 +22,8 @@ import (
 
 	"github.com/kubernetes-csi/external-snapshotter/v2/pkg/apis/volumesnapshot/v1beta1"
 
-	snapshotclientset "github.com/kubernetes-csi/external-snapshotter/v2/pkg/client/clientset/versioned"
 	awscloud "github.com/c2devel/aws-ebs-csi-driver/pkg/cloud"
+	snapshotclientset "github.com/kubernetes-csi/external-snapshotter/v2/pkg/client/clientset/versioned"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	apps "k8s.io/api/apps/v1"
@@ -216,6 +216,9 @@ func NewTestPersistentVolumeClaim(c clientset.Interface, ns *v1.Namespace, claim
 		namespace:    ns,
 		storageClass: sc,
 	}
+}
+
+func NewTestPersistentVolumeClaimWithAccessMode() {
 }
 
 func NewTestPersistentVolumeClaimWithDataSource(c clientset.Interface, ns *v1.Namespace, claimSize string, volumeMode VolumeMode, sc *storagev1.StorageClass, dataSource *v1.TypedLocalObjectReference) *TestPersistentVolumeClaim {

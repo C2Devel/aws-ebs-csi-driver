@@ -79,9 +79,9 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: AWS_EC2_ENDPOINT
-              value: https://api.cloud.croc.ru
+              value: https://ec2.k2.cloud
             - name: AWS_REGION
-              value: croc
+              value: k2
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

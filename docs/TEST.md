@@ -35,7 +35,7 @@ make test-image
 
 ### Как запустить тесты
 Для запуска тестов понадобится:
-- [создать](https://docs.cloud.croc.ru/ru/services/kubernetes.html#creating) Kubernetes кластер в облаке с установленным aws-ebs-csi-driver
+- [создать](https://docs.k2.cloud/ru/services/kubernetes/eks_cluster.html#createekscluster) Kubernetes кластер в облаке с установленным aws-ebs-csi-driver
 - задать переменные окружения:
   - `KUBECONFIG_FILE` - местонахождения kubeconfig для созданного кластера на локальном диске
   - `AWS_ACCESS_KEY_ID` - ключ для доступа к API

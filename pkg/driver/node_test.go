@@ -478,11 +478,18 @@ func TestNodeStageVolume(t *testing.T) {
 				tc.inFlightFunc(inFlight)
 			}
 
+            driverOptions := &DriverOptions{
+				volumeAttachLimit:         -1,
+				reservedVolumeAttachments: -1,
+				legacyXFSProgs: false,
+			}
+
 			awsDriver := &nodeService{
 				metadata:         mockMetadata,
 				mounter:          mockMounter,
 				deviceIdentifier: mockDeviceIdentifier,
 				inFlight:         inFlight,
+				driverOptions:    driverOptions,
 			}
 
 			if tc.expectMock != nil {

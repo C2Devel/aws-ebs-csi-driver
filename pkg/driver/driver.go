@@ -78,6 +78,7 @@ type DriverOptions struct {
 	userAgentExtra                    string
 	otelTracing                       bool
 	modifyVolumeRequestHandlerTimeout time.Duration
+	legacyXFSProgs                    bool
 }
 
 func NewDriver(options ...func(*DriverOptions)) (*Driver, error) {
@@ -271,5 +272,11 @@ func WithModifyVolumeRequestHandlerTimeout(timeout time.Duration) func(*DriverOp
 			return
 		}
 		o.modifyVolumeRequestHandlerTimeout = timeout
+	}
+}
+
+func WithLegacyXFSProgs(enableLegacyXFSProgs bool) func(*DriverOptions) {
+	return func(o *DriverOptions) {
+		o.legacyXFSProgs = enableLegacyXFSProgs
 	}
 }

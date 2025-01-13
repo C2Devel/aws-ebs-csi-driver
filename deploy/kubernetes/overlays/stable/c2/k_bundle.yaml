@@ -473,9 +473,9 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: AWS_EC2_ENDPOINT
-          value: https://api.cloud.croc.ru
+          value: https://ec2.k2.cloud
         - name: AWS_REGION
-          value: croc
+          value: k2
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
             secretKeyRef:
@@ -488,7 +488,7 @@ spec:
               key: access_key
               name: aws-secret
               optional: true
-        image: registry.cloud.croc.ru/kaas/aws-ebs-csi-driver:v1.29.1-ROCKIT1
+        image: registry.cloud.croc.ru/kaas/aws-ebs-csi-driver:v1.29.1-ROCKIT2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
@@ -730,8 +730,8 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
         - name: AWS_REGION
-          value: croc
-        image: registry.cloud.croc.ru/kaas/aws-ebs-csi-driver:v1.29.1-ROCKIT1
+          value: k2
+        image: registry.cloud.croc.ru/kaas/aws-ebs-csi-driver:v1.29.1-ROCKIT2
         imagePullPolicy: IfNotPresent
         lifecycle:
           preStop:

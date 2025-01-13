@@ -75,6 +75,7 @@ func main() {
 		driver.WithOtelTracing(options.ServerOptions.EnableOtelTracing),
 		driver.WithBatching(options.ControllerOptions.Batching),
 		driver.WithModifyVolumeRequestHandlerTimeout(options.ControllerOptions.ModifyVolumeRequestHandlerTimeout),
+		driver.WithLegacyXFSProgs(options.NodeOptions.LegacyXFSProgs),
 	)
 	if err != nil {
 		klog.ErrorS(err, "failed to create driver")

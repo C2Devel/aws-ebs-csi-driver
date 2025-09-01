@@ -1,0 +1,52 @@
+- op: add
+  path: /spec/template/spec/containers/1/args/-
+  value: --kubeconfig=/etc/kubernetes/kubeconfig
+- op: add
+  path: /spec/template/spec/containers/2/args/-
+  value: --kubeconfig=/etc/kubernetes/kubeconfig
+- op: add
+  path: /spec/template/spec/containers/3/args/-
+  value: --kubeconfig=/etc/kubernetes/kubeconfig
+- op: add
+  path: /spec/template/spec/containers/4/args/-
+  value: --kubeconfig=/etc/kubernetes/kubeconfig
+
+
+- op: add
+  path: /spec/template/spec/containers/1/volumeMounts/-
+  value:
+    name: ebs-controller-kubeconfig
+    mountPath: /etc/kubernetes
+    readOnly: true
+- op: add
+  path: /spec/template/spec/containers/2/volumeMounts/-
+  value:
+    name: ebs-controller-kubeconfig
+    mountPath: /etc/kubernetes
+    readOnly: true
+- op: add
+  path: /spec/template/spec/containers/3/volumeMounts/-
+  value:
+    name: ebs-controller-kubeconfig
+    mountPath: /etc/kubernetes
+    readOnly: true
+- op: add
+  path: /spec/template/spec/containers/4/volumeMounts/-
+  value:
+    name: ebs-controller-kubeconfig
+    mountPath: /etc/kubernetes
+    readOnly: true
+
+- op: add
+  path: /spec/template/spec/volumes/-
+  value:
+    name: ebs-controller-kubeconfig
+    secret:
+      secretName: ebs-controller-kubeconfig
+      defaultMode: 420
+      items:
+        - key: kubeconfig
+          path: kubeconfig
+
+- op: remove
+  path: /spec/template/spec/serviceAccountName

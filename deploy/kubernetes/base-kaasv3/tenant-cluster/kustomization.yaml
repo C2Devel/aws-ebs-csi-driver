@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kube-system
+resources:
+- ../../base/clusterrole-attacher.yaml
+- ../../base/clusterrole-csi-node.yaml
+- ../../base/clusterrole-provisioner.yaml
+- ../../base/clusterrole-resizer.yaml
+- ../../base/clusterrole-snapshotter.yaml
+- ../../base/clusterrolebinding-attacher.yaml
+- ../../base/clusterrolebinding-csi-node.yaml
+- ../../base/clusterrolebinding-provisioner.yaml
+- ../../base/clusterrolebinding-resizer.yaml
+- ../../base/clusterrolebinding-snapshotter.yaml
+- ../../base/csidriver.yaml
+- ../../base/node.yaml
+- ../../base/serviceaccount-csi-controller.yaml
+- ../../base/serviceaccount-csi-node.yaml
+- ../../base/role-leases.yaml
+- ../../base/rolebinding-leases.yaml

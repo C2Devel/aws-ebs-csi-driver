@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ebs-csi-leases-rolebinding
+subjects:
+- kind: User
+  name: ebs-csi-controller-sa
+  apiGroup: rbac.authorization.k8s.io

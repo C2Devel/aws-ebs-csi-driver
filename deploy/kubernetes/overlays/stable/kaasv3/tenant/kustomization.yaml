@@ -1,0 +1,49 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../base-kaasv3/tenant-cluster
+
+images:
+  - name: public.ecr.aws/ebs-csi-driver/aws-ebs-csi-driver
+    newName: registry.cloud.croc.ru/kaas/aws-ebs-csi-driver
+    newTag: v1.29.1-ROCKIT1
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner
+    newName: registry.cloud.croc.ru/kaas/external-provisioner
+    newTag: v4.0.0
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/external-attacher
+    newName: registry.cloud.croc.ru/kaas/external-attacher
+    newTag: v4.5.0
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter
+    newName: registry.cloud.croc.ru/kaas/csi-snapshotter
+    newTag: v7.0.1
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/external-resizer
+    newName: registry.cloud.croc.ru/kaas/external-resizer
+    newTag: v1.10.0
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe
+    newName: registry.cloud.croc.ru/kaas/livenessprobe
+    newTag: v2.12.0
+  - name: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar
+    newName: registry.cloud.croc.ru/kaas/node-driver-registrar
+    newTag: v2.10.0
+
+patches:
+- path: patch-attacher-binding.yaml
+  target:
+    kind: ClusterRoleBinding
+    name: ebs-csi-attacher-binding
+- path: patch-provisioner-binding.yaml
+  target:
+    kind: ClusterRoleBinding
+    name: ebs-csi-provisioner-binding
+- path: patch-resizer-binding.yaml
+  target:
+    kind: ClusterRoleBinding
+    name: ebs-csi-resizer-binding
+- path: patch-snapshotter-binding.yaml
+  target:
+    kind: ClusterRoleBinding
+    name: ebs-csi-snapshotter-binding
+- path: patch-leases-binding.yaml
+  target:
+    kind: RoleBinding
+    name: ebs-csi-leases-rolebinding
